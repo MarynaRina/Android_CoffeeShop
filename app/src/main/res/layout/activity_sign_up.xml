@@ -1,0 +1,130 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".SignUpActivity">
+
+    <!-- Оборачиваем все элементы в LinearLayout для вертикального центрирования -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Заголовок -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="90dp"
+            android:gravity="center"
+            android:text="@string/create_account"
+            android:textColor="#F8F4E1"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!-- Поле для ввода имени пользователя -->
+        <EditText
+            android:id="@+id/username_edit"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:autofillHints=""
+            android:textColor="#543310"
+            android:background="@drawable/btn"
+            android:drawableStart="@drawable/userProfile"
+            android:drawablePadding="10dp"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textColorHint="#543310"
+            android:textStyle="bold" />
+
+        <!-- Поле для ввода Email -->
+        <EditText
+            android:id="@+id/email_edit"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textColor="#543310"
+            android:autofillHints=""
+            android:background="@drawable/btn"
+            android:drawableStart="@drawable/mail"
+            android:drawablePadding="10dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textColorHint="#543310"
+            android:textStyle="bold" />
+
+        <!-- Поле для ввода пароля -->
+        <EditText
+            android:id="@+id/password_edit"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:autofillHints=""
+            android:background="@drawable/btn"
+            android:drawableStart="@drawable/pswrd"
+            android:drawablePadding="10dp"
+            android:hint="@string/password"
+            android:textColor="#543310"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColorHint="#543310"
+            android:textStyle="bold" />
+
+        <!-- Кнопка регистрации -->
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#F8F4E1"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="15dp"
+            android:text="@string/sign_up"
+            android:textColor="#543310"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Текст с ссылкой на вход -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dont_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_an_account"
+                android:textColor="#F8F4E1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/login_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/login"
+                android:onClick="onLoginClick"
+                android:textColor="#F8F4E1"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
