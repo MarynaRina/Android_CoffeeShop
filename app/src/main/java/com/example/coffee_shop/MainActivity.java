@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.btnStart.setOnClickListener(v -> {
-            AnimationUtils.pressReleasingAnimation(v);
+            AnimationUtils.highlightsAnimation(v);
             startActivity(new Intent(MainActivity.this, SignUpActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });

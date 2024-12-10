@@ -3,40 +3,192 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".bottomnav.profile.ProfileFragment">
 
+    <ImageView
+        android:id="@+id/bg_pattern"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:contentDescription="banner"
+        android:scaleType="centerCrop"
+        android:src="@drawable/banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Profile"
+        android:textColor="@color/text_title"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bg_pattern"
+        tools:ignore="MissingConstraints" />
+
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image_view"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="150sp"
+        android:id="@+id/profile_image"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@drawable/banneruser"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_pattern"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/profile_icon" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/username_tv"
+        android:id="@+id/username_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
         android:text="User name"
-        android:textSize="22sp"
+        android:textColor="#F8F4E1"
+        android:textStyle="bold"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image_view" />
+        app:layout_constraintTop_toBottomOf="@+id/bg_pattern" />
 
-    <TextView
-        android:id="@+id/useremail_tv"
+
+    <!-- Кнопка Sign Out -->
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_edit">
+
+        <!-- Пункт меню 1 -->
+        <LinearLayout
+            android:id="@+id/menu_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="22dp"
+            android:layout_marginHorizontal="30dp"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="User icon"
+                android:src="@drawable/user"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:text="Edit Profile"
+                android:textColor="@color/text_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="arrow icon"
+                android:src="@drawable/arrow_icon"
+                app:tint="@color/text_title" />
+        </LinearLayout>
+
+        <!-- Пункт меню 2 -->
+        <LinearLayout
+            android:id="@+id/menu_shipping_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginHorizontal="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="22dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="shipping address icon"
+                android:src="@drawable/adress_icon"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:text="Shipping Address"
+                android:textColor="@color/text_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="arrow"
+                android:src="@drawable/arrow_icon"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menu_change_password"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="22dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="change password icon"
+                android:src="@drawable/password_icon"
+                app:tint="@color/text_title" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:text="Change Password"
+                android:textColor="@color/text_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="arrow"
+                android:src="@drawable/arrow_icon"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.widget.Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="email@gmail.com"
-        android:textSize="22sp"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="15dp"
+        android:text="@string/sign_up_out"
+        android:textSize="20sp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn"
+        android:drawablePadding="10dp"
+        android:textAllCaps="false"
+        android:drawableStart="@drawable/sign_out_icon"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_tv" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

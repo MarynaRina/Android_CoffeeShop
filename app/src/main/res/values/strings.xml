@@ -16,4 +16,5 @@
     <string name="login">Login</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="don_t_have_account">Don’t have account?</string>
+    <string name="sign_up_out">Sign out</string>
 </resources>

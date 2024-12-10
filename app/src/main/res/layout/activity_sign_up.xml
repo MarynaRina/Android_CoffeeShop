@@ -4,10 +4,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@color/bg"
     tools:context=".SignUpActivity">
 
-    <!-- Оборачиваем все элементы в LinearLayout для вертикального центрирования -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Заголовок -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -26,11 +24,10 @@
             android:layout_marginBottom="90dp"
             android:gravity="center"
             android:text="@string/create_account"
-            android:textColor="#F8F4E1"
+            android:textColor="#543310"
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <!-- Поле для ввода имени пользователя -->
         <EditText
             android:id="@+id/username_edit"
             android:layout_width="300dp"
@@ -39,7 +36,7 @@
             android:autofillHints=""
             android:textColor="#543310"
             android:background="@drawable/btn"
-            android:drawableStart="@drawable/userProfile"
+            android:drawableStart="@drawable/user"
             android:drawablePadding="10dp"
             android:hint="@string/username"
             android:inputType="text"
@@ -47,7 +44,6 @@
             android:textColorHint="#543310"
             android:textStyle="bold" />
 
-        <!-- Поле для ввода Email -->
         <EditText
             android:id="@+id/email_edit"
             android:layout_width="300dp"
@@ -64,7 +60,6 @@
             android:textColorHint="#543310"
             android:textStyle="bold" />
 
-        <!-- Поле для ввода пароля -->
         <EditText
             android:id="@+id/password_edit"
             android:layout_width="300dp"
@@ -72,7 +67,7 @@
             android:layout_marginBottom="25dp"
             android:autofillHints=""
             android:background="@drawable/btn"
-            android:drawableStart="@drawable/pswrd"
+            android:drawableStart="@drawable/password_icon"
             android:drawablePadding="10dp"
             android:hint="@string/password"
             android:textColor="#543310"
@@ -81,7 +76,6 @@
             android:textColorHint="#543310"
             android:textStyle="bold" />
 
-        <!-- Кнопка регистрации -->
         <Button
             android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
@@ -95,7 +89,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Текст с ссылкой на вход -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/already_have_an_account"
-                android:textColor="#F8F4E1"
+                android:textColor="#543310"
                 android:textSize="20sp" />
 
             <TextView
@@ -120,9 +113,10 @@
                 android:focusable="true"
                 android:text="@string/login"
                 android:onClick="onLoginClick"
-                android:textColor="#F8F4E1"
+                android:textColor="#543310"
                 android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="OnClick" />
         </LinearLayout>
 
     </LinearLayout>

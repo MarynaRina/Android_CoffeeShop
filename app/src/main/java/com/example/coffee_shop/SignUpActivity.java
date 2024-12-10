@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
@@ -60,9 +61,10 @@ public class SignUpActivity extends AppCompatActivity {
                                 task -> {
                                     if (task.isSuccessful()) {
                                         HashMap<String, String> userInfo = new HashMap<>();
-                                        userInfo.put("password", binding.passwordEdit.getText().toString());
                                         userInfo.put("email", binding.emailEdit.getText().toString());
-                                        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userInfo);
+                                        userInfo.put("username", binding.usernameEdit.getText().toString());
+                                        userInfo.put("profileImage", "");
+                                        FirebaseDatabase.getInstance().getReference().child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(userInfo);
                                         startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                     }
                                 }
