@@ -112,11 +112,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/login"
-                android:onClick="onLoginClick"
                 android:textColor="#543310"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                tools:ignore="OnClick" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

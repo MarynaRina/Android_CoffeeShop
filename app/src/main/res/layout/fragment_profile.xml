@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/bg"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".bottomnav.profile.ProfileFragment">
 
     <ImageView
@@ -22,7 +22,7 @@
         android:id="@+id/profile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:text="Profile"
         android:textColor="@color/text_title"
         android:textSize="38sp"
@@ -47,42 +47,41 @@
         android:layout_height="wrap_content"
         android:text="User name"
         android:textColor="#F8F4E1"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:textSize="26sp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bg_pattern" />
 
 
-    <!-- Кнопка Sign Out -->
     <LinearLayout
         android:id="@+id/menu_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_marginTop="90dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_edit">
 
-        <!-- Пункт меню 1 -->
         <LinearLayout
             android:id="@+id/menu_edit_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingVertical="22dp"
-            android:layout_marginHorizontal="30dp"
-            >
+            android:paddingVertical="20dp">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="User icon"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user"
+                app:tint="@color/text_title" />
 
             <TextView
                 android:layout_width="0dp"
@@ -107,18 +106,18 @@
             android:id="@+id/menu_shipping_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
             android:layout_marginHorizontal="30dp"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingVertical="22dp">
+            android:paddingVertical="20dp">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="shipping address icon"
                 android:src="@drawable/adress_icon"
-                />
+                app:tint="@color/text_title" />
 
             <TextView
                 android:layout_width="0dp"
@@ -134,19 +133,18 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="arrow"
-                android:src="@drawable/arrow_icon"
-                />
+                android:src="@drawable/arrow_icon" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/menu_change_password"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:background="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingVertical="22dp">
+            android:paddingVertical="20dp">
 
             <ImageView
                 android:layout_width="24dp"
@@ -169,26 +167,30 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="arrow"
-                android:src="@drawable/arrow_icon"/>
+                android:src="@drawable/arrow_icon" />
         </LinearLayout>
     </LinearLayout>
 
     <android.widget.Button
+        android:id="@+id/btn_sign_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:drawableStart="@drawable/sign_out_icon"
+        android:drawablePadding="10dp"
         android:paddingHorizontal="50dp"
         android:paddingVertical="15dp"
         android:text="@string/sign_up_out"
-        android:textSize="20sp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/btn"
-        android:drawablePadding="10dp"
         android:textAllCaps="false"
-        android:drawableStart="@drawable/sign_out_icon"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_container" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

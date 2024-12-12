@@ -46,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         TextView loginLink = findViewById(R.id.login_link);
         loginLink.setOnClickListener(v -> {
-            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
@@ -65,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         userInfo.put("username", binding.usernameEdit.getText().toString());
                                         userInfo.put("profileImage", "");
                                         FirebaseDatabase.getInstance().getReference().child("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(userInfo);
-                                        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                        startActivity(new Intent(this, LoginActivity.class));
                                     }
                                 }
                         );

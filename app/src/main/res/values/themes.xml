@@ -1,9 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Coffee_shop" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Theme.Coffee_shop" parent="Base.Theme.Coffee_shop">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigation.NoActiveIndicator</item>
     </style>
 
-    <style name="Theme.Coffee_shop" parent="Base.Theme.Coffee_shop" />
+    <style name="BottomNavigation.NoActiveIndicator" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@null</item>
+    </style>
+
 </resources>
