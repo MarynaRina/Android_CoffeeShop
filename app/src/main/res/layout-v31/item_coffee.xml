@@ -1,0 +1,49 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="coffee"
+            type="com.example.coffee_shop.models.Coffee" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="@drawable/rounded_corners">
+
+
+            <ImageView
+                android:id="@+id/coffee_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true"
+                android:background="@drawable/rounded_corners"
+                app:imageUrl="@{coffee.imageUrl}" />
+
+
+        <TextView
+            android:id="@+id/coffee_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{coffee.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="4dp" />
+
+        <TextView
+            android:id="@+id/coffee_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{`$` + coffee.price}'
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:paddingTop="2dp" />
+    </LinearLayout>
+</layout>

@@ -16,6 +16,7 @@ import com.example.coffee_shop.bottomnav.favorite.FavoriteFragment;
 import com.example.coffee_shop.bottomnav.home.HomeFragment;
 import com.example.coffee_shop.bottomnav.profile.ProfileFragment;
 import com.example.coffee_shop.databinding.ActivityMainBinding;
+import com.example.coffee_shop.utils.AnimationUtils;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
@@ -23,7 +24,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,26 +42,33 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
         } else {
-
             binding.bottomNav.setSelectedItemId(R.id.profile);
 
-            Map<Integer, Fragment> fragmentMap = new HashMap<>();
-            fragmentMap.put(R.id.home, new HomeFragment());
-            fragmentMap.put(R.id.profile, new ProfileFragment());
-            fragmentMap.put(R.id.cart, new CartFragment());
-            fragmentMap.put(R.id.favorite, new FavoriteFragment());
-
             binding.bottomNav.setOnItemSelectedListener(item -> {
-                Fragment fragment = fragmentMap.get(item.getItemId());
-                if (fragment != null) {
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(binding.fragmentContainer.getId(), fragment)
-                            .commit();
+                Fragment selectedFragment = null;
 
+                if (item.getItemId() == R.id.home) {
+                    selectedFragment = new HomeFragment();
+                } else if (item.getItemId() == R.id.profile) {
+                    selectedFragment = new ProfileFragment();
+                } else if (item.getItemId() == R.id.cart) {
+                    selectedFragment = new CartFragment();
+                } else if (item.getItemId() == R.id.favorite) {
+                    selectedFragment = new FavoriteFragment();
+                }
+
+                if (selectedFragment != null) {
+                    View iconView = binding.bottomNav.findViewById(item.getItemId());
+                    if (iconView != null) {
+                        AnimationUtils.highlightsAnimation(iconView);
+                    }
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(binding.fragmentContainer.getId(), selectedFragment)
+                            .commit();
                 }
                 return true;
             });
         }
-
     }
 }

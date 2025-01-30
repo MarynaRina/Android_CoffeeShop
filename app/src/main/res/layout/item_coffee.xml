@@ -1,0 +1,65 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="coffee"
+            type="com.example.coffee_shop.models.Coffee" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/rounded_corners">
+
+        <ImageView
+            android:id="@+id/coffee_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:imageUrl="@{coffee.imageUrl}" />
+
+        <TextView
+            android:id="@+id/coffee_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{coffee.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/coffee_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_weight="1"
+                android:text="@{coffee.formattedPrice}"
+                android:textColor="@android:color/black"
+                android:paddingStart="8dp" />
+
+            <ImageButton
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle_button_background"
+                android:contentDescription="Add to cart"
+                android:src="@drawable/ic_add"
+                android:padding="8dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>
+

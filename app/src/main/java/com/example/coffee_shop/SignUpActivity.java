@@ -1,22 +1,18 @@
 package com.example.coffee_shop;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.example.coffee_shop.databinding.ActivitySignUpBinding;
 import com.example.coffee_shop.utils.AnimationUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -52,6 +48,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         binding.btnSignup.setOnClickListener(v -> {
             AnimationUtils.pressReleasingAnimation(v);
+            if (binding.passwordEdit.length() < 6) {
+                Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (binding.emailEdit.getText().toString().isEmpty() || binding.passwordEdit.getText().toString().isEmpty() || binding.usernameEdit.getText().toString().isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show();

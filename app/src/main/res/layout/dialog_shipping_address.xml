@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/dialog_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/dialog_bg">
+
+    <EditText
+        android:id="@+id/edit_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:textColorHint="@color/text_title"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/edit_address"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/text_title"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:inputType="textPostalAddress"
+        android:padding="16dp"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/edit_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:hint="City"
+        android:textSize="20sp"
+        android:inputType="text"
+        android:textColorHint="@color/text_title"
+        android:padding="16dp"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/edit_zip_code"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/text_title"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:hint="Zip Code"
+        android:inputType="number"
+        android:padding="16dp"
+        android:layout_marginTop="10dp" />
+
+    <android.widget.Button
+        android:id="@+id/btn_save_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:text="Save"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+</LinearLayout>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
-import com.example.coffee_shop.bottomnav.profile.ProfileFragment;
 import com.example.coffee_shop.utils.AnimationUtils;
 import android.widget.Toast;
 import androidx.core.view.ViewCompat;
@@ -15,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class LoginActivity extends AppCompatActivity {
-
     private ActivityLoginBinding binding;
 
     @Override
@@ -48,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         binding.passwordEdit.getText().toString()
                 ).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                          startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         finish();
                     } else {

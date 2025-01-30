@@ -3,10 +3,17 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="bottomNavigationStyle">@style/BottomNavigation.NoActiveIndicator</item>
+        <item name="fontFamily">@font/source_sans_pro_regular</item>
     </style>
 
     <style name="BottomNavigation.NoActiveIndicator" parent="Widget.Material3.BottomNavigationView">
         <item name="itemActiveIndicatorStyle">@null</item>
+        <item name="android:background">@color/bg_light</item>
+        <item name="itemIconTint">@color/bottom_nav_icon_colors</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@drawable/dialog_bg</item>
     </style>
 
 </resources>
