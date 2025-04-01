@@ -11,8 +11,8 @@ android {
         applicationId = "com.example.coffee_shop"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,10 +35,11 @@ android {
         viewBinding = true
     }
 }
+
 dependencies {
     implementation(platform(libs.firebase.bom))
 
-    // Firebase libraries
+    // Firebase libraries (версії визначаються в firebase-bom)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
@@ -55,12 +56,13 @@ dependencies {
     implementation(libs.circleimageview)
     implementation(libs.glide)
     implementation(libs.cloudinary.android)
+    implementation(libs.play.services.location)
 
     // Testing libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    // Annotation processor for Glide or other tools
+    // Annotation processor for Glide
     annotationProcessor(libs.compiler)
 }

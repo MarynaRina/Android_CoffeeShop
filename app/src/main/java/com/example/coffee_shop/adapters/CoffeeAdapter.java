@@ -1,23 +1,32 @@
 package com.example.coffee_shop.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffee_shop.databinding.ItemCoffeeBinding;
-import com.example.coffee_shop.models.Coffee;
+import com.example.coffee_shop.data.models.Coffee;
+import com.example.coffee_shop.ui.cart.AddToCartBottomSheetFragment;
+import com.example.coffee_shop.ui.shared.SharedCoffeeViewModel;
 
 import java.util.List;
 
 public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder> {
-    private List<Coffee> coffeeList;
+    private final List<Coffee> coffeeList;
+    private final FragmentManager fragmentManager;
+    private final Context context;
+    private final SharedCoffeeViewModel sharedViewModel;
 
-    public CoffeeAdapter() {}
 
-    public CoffeeAdapter(List<Coffee> coffeeList) {
+    public CoffeeAdapter(List<Coffee> coffeeList, Context context, FragmentManager fragmentManager, SharedCoffeeViewModel sharedViewModel) {
         this.coffeeList = coffeeList;
+        this.context = context;
+        this.fragmentManager = fragmentManager;
+        this.sharedViewModel = sharedViewModel;
     }
 
     @NonNull
@@ -47,8 +56,7 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
         notifyDataSetChanged();
     }
 
-
-    static class CoffeeViewHolder extends RecyclerView.ViewHolder {
+    class CoffeeViewHolder extends RecyclerView.ViewHolder {
         private final ItemCoffeeBinding binding;
 
         public CoffeeViewHolder(@NonNull ItemCoffeeBinding binding) {
@@ -59,6 +67,11 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
         public void bind(Coffee coffee) {
             binding.setCoffee(coffee);
             binding.executePendingBindings();
+
+            binding.addToCartButton.setOnClickListener(v -> {
+                AddToCartBottomSheetFragment bottomSheet = AddToCartBottomSheetFragment.newInstance(coffee);
+                bottomSheet.show(fragmentManager, bottomSheet.getTag());
+            });
         }
     }
 }

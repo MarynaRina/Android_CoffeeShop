@@ -1,54 +1,70 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="coffee"
-            type="com.example.coffee_shop.models.Coffee" />
+            type="com.example.coffee_shop.data.models.Coffee" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="8dp"
-        android:paddingBottom="8dp"
+        android:padding="8dp"
         android:background="@drawable/rounded_corners">
 
+        <!-- Зображення кави -->
         <ImageView
             android:id="@+id/coffee_image"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:imageUrl="@{coffee.imageUrl}" />
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{coffee.imageUrl}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="16:9" />
 
+        <!-- Назва кави -->
         <TextView
             android:id="@+id/coffee_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@{coffee.name}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:paddingTop="4dp" />
+            android:paddingTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/coffee_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Ціна і кнопка додавання -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/coffee_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:paddingTop="4dp">
 
+            <!-- Ціна кави -->
             <TextView
                 android:id="@+id/coffee_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:layout_weight="1"
+                android:textSize="16sp"
                 android:text="@{coffee.formattedPrice}"
                 android:textColor="@android:color/black"
-                android:paddingStart="8dp" />
+                android:paddingStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/add_to_cart_button" />
 
+            <!-- Кнопка додавання в кошик -->
             <ImageButton
                 android:id="@+id/add_to_cart_button"
                 android:layout_width="20dp"
@@ -57,9 +73,10 @@
                 android:contentDescription="Add to cart"
                 android:src="@drawable/ic_add"
                 android:padding="8dp"
-                />
-        </LinearLayout>
-    </LinearLayout>
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/coffee_price" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-

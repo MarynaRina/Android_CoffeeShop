@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    android:padding="20dp"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="btnClose"
+            android:src="@drawable/ic_close"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/text_title"
+            />
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_title"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="FavoritesBtn"
+            android:src="@drawable/ic_favorite_border"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/text_title"
+            />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageProduct"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/text_title"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Вибір цукру -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/btnSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_selector"
+            android:text="Sugar"
+            android:textColor="@color/text_title"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:checked="false"
+            android:textOff="Sugar"
+            android:textOn="Sugar" />
+
+        <!-- Вибір розміру -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/btnSizeS"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:text="S"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:checked="false"
+                android:padding="5dp"
+                android:textOff="S"
+                android:textOn="S" />
+                />
+
+            <ToggleButton
+                android:id="@+id/btnSizeM"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:text="M"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:checked="false"
+                android:padding="5dp"
+                android:layout_marginStart="10dp"
+                android:textOff="M"
+                android:textOn="M"
+                />
+
+            <ToggleButton
+                android:id="@+id/btnSizeL"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:text="L"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:checked="false"
+                android:padding="5dp"
+                android:layout_marginStart="10dp"
+                android:textOff="L"
+                android:textOn="L"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@drawable/quantity_box"
+            android:gravity="center"
+            >
+
+            <android.widget.Button
+                android:id="@+id/btnDecrease"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:text="-"
+                android:textColor="@color/text_title"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textQuantity"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="1"
+                android:layout_marginHorizontal="10dp" />
+
+            <android.widget.Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:text="+"
+                android:textColor="@color/text_title"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    <!-- Кнопка "Add to cart" -->
+        <android.widget.Button
+            android:layout_marginStart="20dp"
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:text="Add to cart"
+            android:textAllCaps="false"
+            android:textColor="@color/text_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+    </LinearLayout>
+</LinearLayout>

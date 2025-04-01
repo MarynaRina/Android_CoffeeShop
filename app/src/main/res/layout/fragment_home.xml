@@ -8,7 +8,7 @@
     tools:theme="@style/Base.Theme.Coffee_shop"
     android:paddingStart="40dp"
     android:paddingEnd="20dp"
-    tools:context=".bottomnav.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -21,20 +21,24 @@
 
     <TextView
         android:id="@+id/current_address"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Radom, Poland"
+        android:text=""
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:fontFamily="@font/source_sans_pro_semibold"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textColor="@color/text_title"
         app:drawableStartCompat="@drawable/adress_icon"
         app:drawableTint="@color/text_title"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@id/profile_image"
         app:layout_constraintTop_toTopOf="@id/profile_image"
         app:layout_constraintBottom_toBottomOf="@id/profile_image"
-        android:layout_marginStart="20dp" />
+        app:layout_constraintEnd_toStartOf="@id/search_icon"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
 
     <ImageView
         android:id="@+id/search_icon"
