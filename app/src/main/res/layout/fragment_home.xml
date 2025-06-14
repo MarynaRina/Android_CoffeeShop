@@ -8,7 +8,7 @@
     tools:theme="@style/Base.Theme.Coffee_shop"
     android:paddingStart="40dp"
     android:paddingEnd="20dp"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".presentation.home.view.HomeFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="Hot Coffee"
+                android:text="@string/hot_coffee"
                 android:textColor="@color/text_title"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="Cold Coffee"
+                android:text="@string/cold_coffee"
                 android:textColor="@color/text_title"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="Other"
+                android:text="@string/other"
                 android:textColor="@color/text_title"
                 android:textSize="20sp" />
         </LinearLayout>

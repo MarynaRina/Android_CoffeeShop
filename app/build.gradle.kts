@@ -65,4 +65,9 @@ dependencies {
 
     // Annotation processor for Glide
     annotationProcessor(libs.compiler)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.livedata)
+    // інші залежності
+    implementation (libs.room.runtime)
+    annotationProcessor (libs.room.compiler)
 }

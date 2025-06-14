@@ -79,16 +79,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_selector"
-            android:text="Sugar"
+            android:text="@string/sugar"
             android:textColor="@color/text_title"
             android:textStyle="bold"
             android:textSize="18sp"
             android:padding="10dp"
             android:checked="false"
-            android:textOff="Sugar"
-            android:textOn="Sugar" />
+            android:textOff="@string/sugar"
+            android:textOn="@string/sugar" />
 
-        <!-- Вибір розміру -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,14 +101,14 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_selector"
-                android:text="S"
+                android:text="@string/s"
                 android:textColor="@color/text_title"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:checked="false"
                 android:padding="5dp"
-                android:textOff="S"
-                android:textOn="S" />
+                android:textOff="@string/s"
+                android:textOn="@string/s" />
                 />
 
             <ToggleButton
@@ -117,15 +116,15 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_selector"
-                android:text="M"
+                android:text="@string/m"
                 android:textColor="@color/text_title"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:checked="false"
                 android:padding="5dp"
                 android:layout_marginStart="10dp"
-                android:textOff="M"
-                android:textOn="M"
+                android:textOff="@string/m"
+                android:textOn="@string/m"
                 />
 
             <ToggleButton
@@ -133,15 +132,15 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_selector"
-                android:text="L"
+                android:text="@string/l"
                 android:textColor="@color/text_title"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:checked="false"
                 android:padding="5dp"
                 android:layout_marginStart="10dp"
-                android:textOff="L"
-                android:textOn="L"
+                android:textOff="@string/l"
+                android:textOn="@string/l"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -195,18 +194,17 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-    <!-- Кнопка "Add to cart" -->
         <android.widget.Button
             android:layout_marginStart="20dp"
-        android:id="@+id/btnAddToCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn"
-        android:text="Add to cart"
+            android:id="@+id/btnAddToCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_light"
+            android:text="@string/add_to_cart"
             android:textAllCaps="false"
             android:textColor="@color/text_title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="10dp"/>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="10dp"/>
     </LinearLayout>
 </LinearLayout>

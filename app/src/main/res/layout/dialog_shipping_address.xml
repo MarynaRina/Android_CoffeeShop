@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="40dp">  <!-- Ось тут додали відступи -->
+    android:padding="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:id="@+id/edit_full_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
             android:textColorHint="@color/text_title"
             android:inputType="text"
             android:textSize="20sp"
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:textColorHint="@color/text_title"
             android:layout_height="wrap_content"
-            android:hint="Address"
+            android:hint="@string/address"
             android:textSize="20sp"
             android:textStyle="bold"
             android:inputType="textPostalAddress"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:hint="City"
+            android:hint="@string/city"
             android:textSize="20sp"
             android:inputType="text"
             android:textColorHint="@color/text_title"
@@ -54,7 +54,7 @@
             android:textSize="20sp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:hint="Zip Code"
+            android:hint="@string/zip_code"
             android:inputType="number"
             android:padding="16dp"
             android:layout_marginTop="10dp" />
@@ -63,8 +63,8 @@
             android:id="@+id/btn_save_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn"
-            android:text="Save"
+            android:background="@drawable/btn_light"
+            android:text="@string/save"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp" />

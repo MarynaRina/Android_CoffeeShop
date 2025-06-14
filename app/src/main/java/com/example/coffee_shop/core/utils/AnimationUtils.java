@@ -2,8 +2,6 @@ package com.example.coffee_shop.core.utils;
 
 import android.animation.ValueAnimator;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;

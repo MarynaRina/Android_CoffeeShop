@@ -54,8 +54,8 @@
             <!-- Кнопка "улюблене" -->
             <ImageView
                 android:id="@+id/btnFavorite"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_favorite_border"
                 android:clickable="true"
                 android:focusable="true"
@@ -80,8 +80,8 @@
 
             <ImageButton
                 android:id="@+id/add_to_cart_button"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/circle_button_background"
                 android:contentDescription="Add to cart"
                 android:padding="8dp"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".presentation.profile.view.ProfileFragment">
 
     <ImageView
         android:id="@+id/bg_pattern"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textColor="@color/text_title"
         android:textSize="38sp"
         android:textStyle="bold"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
-                android:text="Edit Profile"
+                android:text="@string/edit_profile"
                 android:fontFamily="@font/source_sans_pro_semibold"
                 android:textColor="@color/text_title"
                 android:textSize="20sp"
@@ -127,7 +127,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/source_sans_pro_semibold"
-                android:text="Shipping Address"
+                android:text="@string/shipping_address"
                 android:textColor="@color/text_title"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
-                android:text="Change Language"
+                android:text="@string/change_language"
                 android:fontFamily="@font/source_sans_pro_semibold"
                 android:textColor="@color/text_title"
                 android:textSize="20sp"
@@ -179,7 +179,7 @@
         android:id="@+id/btn_sign_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn"
+        android:background="@drawable/btn_light"
         android:drawableStart="@drawable/sign_out_icon"
         android:drawablePadding="10dp"
         android:paddingHorizontal="50dp"

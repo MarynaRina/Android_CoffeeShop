@@ -13,7 +13,7 @@
         android:id="@+id/edit_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter new username"
+        android:hint="@string/enter_new_username"
         android:textColorHint="@color/text_title"
         android:inputType="textPersonName"
         android:textSize="20sp"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:hint="Enter new password"
+        android:hint="@string/enter_new_password"
         android:textColorHint="@color/text_title"
         android:inputType="textPassword"
         android:padding="16dp"
@@ -38,8 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background = '@drawable/btn'
-        android:text="Save"
+        android:background = '@drawable/btn_light'
+        android:text="@string/save"
         android:textStyle="bold"
         />
 </LinearLayout>

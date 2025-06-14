@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/bg">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_language"
+        android:textSize="22sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/language_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <RadioButton
+            android:id="@+id/radio_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/english"
+            android:textSize="18sp"
+            android:textColor="@color/text_title"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:padding="12dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_ukrainian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ukrainian"
+            android:textSize="18sp"
+            android:textColor="@color/text_title"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:padding="12dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_polish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/polish"
+            android:textSize="18sp"
+            android:textColor="@color/text_title"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:padding="12dp"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/btn_color"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btn_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/btn_color"/>
+    </LinearLayout>
+</LinearLayout>

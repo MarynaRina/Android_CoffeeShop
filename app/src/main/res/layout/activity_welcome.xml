@@ -39,7 +39,7 @@
         android:text="@string/get_started"
         android:textStyle="bold"
         android:backgroundTint="#F8F4E1"
-        android:background="@drawable/btn"
+        android:background="@drawable/btn_light"
         android:textColor="#543310"
         android:textSize="20sp"
         android:paddingHorizontal="50dp"
