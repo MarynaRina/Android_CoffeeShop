@@ -1,0 +1,26 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Вибраний стан -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_light"/>
+            <stroke android:width="2dp" android:color="@color/bg"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_light"/>
+            <stroke android:width="2dp" android:color="@color/bg"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg"/>
+            <stroke android:width="2dp" android:color="@color/bg_light"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+</selector>

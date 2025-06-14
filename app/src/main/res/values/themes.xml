@@ -1,9 +1,41 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Coffee_shop" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Theme.Coffee_shop" parent="Base.Theme.Coffee_shop">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigation.NoActiveIndicator</item>
+        <item name="fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="Theme.Coffee_shop" parent="Base.Theme.Coffee_shop" />
+    <!-- Глобальний стиль BottomNavigation -->
+    <style name="BottomNavigation.NoActiveIndicator" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@null</item>
+    </style>
+
+    <!-- Стиль для HomeFragment -->
+    <style name="BottomNav.Home" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/btn_color</item>
+        <item name="itemIconTint">@color/bottom_nav_home</item>
+    </style>
+
+    <!-- Стиль для інших фрагментів -->
+    <style name="BottomNav.Others" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/text_title</item>
+        <item name="itemIconTint">@color/bottom_nav_others</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@drawable/dialog_bg</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
 </resources>

@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/underline_active" android:state_selected="true" />
+    <item android:drawable="@android:color/transparent" />
+</selector>

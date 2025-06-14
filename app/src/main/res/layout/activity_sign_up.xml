@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".SignUpActivity">
+    tools:context=".presentation.auth.view.SignUpActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_marginBottom="15dp"
             android:autofillHints=""
             android:textColor="#543310"
-            android:background="@drawable/btn"
+            android:background="@drawable/btn_light"
             android:drawableStart="@drawable/user"
             android:drawablePadding="10dp"
             android:hint="@string/username"
@@ -51,7 +51,7 @@
             android:layout_marginBottom="15dp"
             android:textColor="#543310"
             android:autofillHints=""
-            android:background="@drawable/btn"
+            android:background="@drawable/btn_light"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="10dp"
             android:hint="@string/email"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:autofillHints=""
-            android:background="@drawable/btn"
+            android:background="@drawable/btn_light"
             android:drawableStart="@drawable/password_icon"
             android:drawablePadding="10dp"
             android:hint="@string/password"
@@ -112,11 +112,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/login"
-                android:onClick="onLoginClick"
                 android:textColor="#543310"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                tools:ignore="OnClick" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

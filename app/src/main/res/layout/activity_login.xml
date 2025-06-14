@@ -4,8 +4,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C0A682"
-    tools:context=".LoginActivity">
+    android:background="@color/bg"
+    tools:context=".presentation.auth.view.LoginActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:layout_marginBottom="15dp"
             android:textColor="#543310"
             android:autofillHints=""
-            android:background="@drawable/btn"
+            android:background="@drawable/btn_light"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="10dp"
             android:hint="@string/email"
@@ -60,7 +60,7 @@
             android:layout_marginBottom="25dp"
             android:autofillHints=""
             android:textColor="#543310"
-            android:background="@drawable/btn"
+            android:background="@drawable/btn_light"
             android:drawableStart="@drawable/password_icon"
             android:drawablePadding="10dp"
             android:hint="@string/password"

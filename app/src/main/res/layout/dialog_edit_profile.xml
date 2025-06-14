@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:id="@+id/dialog_edit"
+    android:layout_margin="40dp"
+    android:background="@drawable/dialog_bg"
+    android:clipToOutline="true">
+
+    <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_new_username"
+        android:textColorHint="@color/text_title"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:hint="@string/enter_new_password"
+        android:textColorHint="@color/text_title"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:layout_marginTop="10dp" />
+
+    <android.widget.Button
+        android:textSize="20sp"
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background = '@drawable/btn_light'
+        android:text="@string/save"
+        android:textStyle="bold"
+        />
+</LinearLayout>

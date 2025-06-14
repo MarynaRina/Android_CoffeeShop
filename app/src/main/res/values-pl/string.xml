@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Kawiarnia</string>
+
+    <!-- Welcome Screen -->
+    <string name="your_perfect_coffee_anytime_anywhere">Twoja idealna kawa, o każdej porze, w każdym miejscu</string>
+    <string name="start_your_day_right_with_a_cup_of_perfection">Rozpocznij dzień dobrze z filiżanką doskonałości!</string>
+    <string name="get_started">Rozpocznij</string>
+
+    <!-- Authentication -->
+    <string name="welcome_back">Witamy ponownie!</string>
+    <string name="login_to_your_account">Zaloguj się na swoje konto</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="email">E-mail</string>
+    <string name="password">Hasło</string>
+    <string name="login">Zaloguj się</string>
+    <string name="create_account">Utwórz konto</string>
+    <string name="sign_up">Zarejestruj się</string>
+    <string name="sign_up_link">Zarejestruj się</string>
+    <string name="already_have_an_account">Masz już konto?</string>
+    <string name="don_t_have_account">Nie masz konta?</string>
+    <string name="sign_up_out">Wyloguj</string>
+
+    <!-- Profile -->
+    <string name="profile">Profil</string>
+    <string name="edit_profile">Edytuj profil</string>
+    <string name="enter_new_username">Wprowadź nową nazwę użytkownika</string>
+    <string name="enter_new_password">Wprowadź nowe hasło</string>
+    <string name="save">Zapisz</string>
+
+    <!-- Shipping -->
+    <string name="shipping_address">Adres dostawy</string>
+    <string name="full_name">Pełne imię i nazwisko</string>
+    <string name="address">Adres</string>
+    <string name="city">Miasto</string>
+    <string name="zip_code">Kod pocztowy</string>
+
+    <!-- Language Settings -->
+    <string name="change_language">Zmień język</string>
+    <string name="select_language">Wybierz język</string>
+    <string name="english">Angielski</string>
+    <string name="ukrainian">Ukraiński</string>
+    <string name="polish">Polski</string>
+    <string name="cancel">Anuluj</string>
+    <string name="apply">Zastosuj</string>
+
+    <!-- Product Catalog -->
+    <string name="search_from_here">Szukaj tutaj</string>
+    <string name="hot_coffee">Gorąca kawa</string>
+    <string name="cold_coffee">Zimna kawa</string>
+    <string name="other">Inne</string>
+    <string name="coffee_name">Nazwa kawy</string>
+
+    <!-- Product Details -->
+    <string name="sugar">Cukier</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="l">L</string>
+    <string name="without_sugar">Bez cukru</string>
+    <string name="size_m">Rozmiar: M</string>
+    <string name="add_to_cart">Dodaj do koszyka</string>
+
+    <!-- Shopping Cart -->
+    <string name="your_cart">Twój koszyk</string>
+    <string name="your_cart_is_empty">Twój koszyk jest pusty</string>
+    <string name="total">Suma:</string>
+    <string name="clear">Wyczyść</string>
+    <string name="checkout">Do kasy</string>
+    <string name="delete_item">Usuń</string>
+
+    <!-- Favorites -->
+    <string name="favorites">Ulubione</string>
+    <string name="no_favorites_yet">Brak ulubionych</string>
+</resources>

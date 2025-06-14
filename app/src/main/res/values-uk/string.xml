@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Кав\'ярня</string>
+
+    <!-- Welcome Screen -->
+    <string name="your_perfect_coffee_anytime_anywhere">Ваша ідеальна кава, в будь-який час, у будь-якому місці</string>
+    <string name="start_your_day_right_with_a_cup_of_perfection">Почніть свій день правильно з чашкою досконалості!</string>
+    <string name="get_started">Розпочати</string>
+
+    <!-- Authentication -->
+    <string name="welcome_back">Із поверненням!</string>
+    <string name="login_to_your_account">Увійдіть у свій аккаунт</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="email">Електронна пошта</string>
+    <string name="password">Пароль</string>
+    <string name="login">Увійти</string>
+    <string name="create_account">Створити аккаунт</string>
+    <string name="sign_up">Зареєструватися</string>
+    <string name="sign_up_link">Зареєструватися</string>
+    <string name="already_have_an_account">Вже маєте аккаунт?</string>
+    <string name="don_t_have_account">Немає аккаунту?</string>
+    <string name="sign_up_out">Вийти</string>
+
+    <!-- Profile -->
+    <string name="profile">Профіль</string>
+    <string name="edit_profile">Редагувати профіль</string>
+    <string name="enter_new_username">Введіть нове ім\'я користувача</string>
+    <string name="enter_new_password">Введіть новий пароль</string>
+    <string name="save">Зберегти</string>
+
+    <!-- Shipping -->
+    <string name="shipping_address">Адреса доставки</string>
+    <string name="full_name">Повне ім\'я</string>
+    <string name="address">Адреса</string>
+    <string name="city">Місто</string>
+    <string name="zip_code">Поштовий індекс</string>
+
+    <!-- Language Settings -->
+    <string name="change_language">Змінити мову</string>
+    <string name="select_language">Виберіть мову</string>
+    <string name="english">Англійська</string>
+    <string name="ukrainian">Українська</string>
+    <string name="polish">Польська</string>
+    <string name="cancel">Скасувати</string>
+    <string name="apply">Застосувати</string>
+
+    <!-- Product Catalog -->
+    <string name="search_from_here">Шукати звідси</string>
+    <string name="hot_coffee">Гаряча кава</string>
+    <string name="cold_coffee">Холодна кава</string>
+    <string name="other">Інше</string>
+    <string name="coffee_name">Назва кави</string>
+
+    <!-- Product Details -->
+    <string name="sugar">Цукор</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="l">L</string>
+    <string name="without_sugar">Без цукру</string>
+    <string name="size_m">Розмір: M</string>
+    <string name="add_to_cart">Додати до кошика</string>
+
+    <!-- Shopping Cart -->
+    <string name="your_cart">Ваш кошик</string>
+    <string name="your_cart_is_empty">Ваш кошик порожній</string>
+    <string name="total">Всього:</string>
+    <string name="clear">Очистити</string>
+    <string name="checkout">Оформити</string>
+    <string name="delete_item">Видалити</string>
+
+    <!-- Favorites -->
+    <string name="favorites">Вибране</string>
+    <string name="no_favorites_yet">Поки немає вибраних</string>
+</resources>
