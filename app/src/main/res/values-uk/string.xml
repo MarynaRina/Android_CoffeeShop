@@ -47,8 +47,8 @@
 
     <!-- Product Catalog -->
     <string name="search_from_here">Шукати звідси</string>
-    <string name="hot_coffee">Гаряча кава</string>
-    <string name="cold_coffee">Холодна кава</string>
+    <string name="hot_coffee">Гаряча</string>
+    <string name="cold_coffee">Холодна</string>
     <string name="other">Інше</string>
     <string name="coffee_name">Назва кави</string>
 
