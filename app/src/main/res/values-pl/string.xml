@@ -47,8 +47,8 @@
 
     <!-- Product Catalog -->
     <string name="search_from_here">Szukaj tutaj</string>
-    <string name="hot_coffee">Gorąca kawa</string>
-    <string name="cold_coffee">Zimna kawa</string>
+    <string name="hot_coffee">Gorąca</string>
+    <string name="cold_coffee">Zimna</string>
     <string name="other">Inne</string>
     <string name="coffee_name">Nazwa kawy</string>
 
