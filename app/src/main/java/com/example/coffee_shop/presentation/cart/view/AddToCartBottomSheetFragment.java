@@ -2,6 +2,7 @@ package com.example.coffee_shop.presentation.cart.view;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,12 +102,11 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
 
                 CartItem item = new CartItem(
                         coffee.getId(),
-                        coffee.getName(),
-                        coffee.getImageUrl(),
                         size,
                         quantity,
                         coffee.getPrice(),
-                        binding.btnSugar.isChecked()
+                        binding.btnSugar.isChecked(),
+                        coffee
                 );
 
                 cartViewModel.addToCart(item);
@@ -143,8 +143,10 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
 
     private void updateUI() {
         if (coffee != null) {
-            binding.textTitle.setText(coffee.getName());
-            binding.textDescription.setText(coffee.getDescription());
+            Log.d("AddToCartBottomSheet", "name: " + coffee.getLocalizedName());
+            Log.d("AddToCartBottomSheet", "desc: " + coffee.getLocalizedDescription());
+            binding.textTitle.setText(coffee.getLocalizedName());
+            binding.textDescription.setText(coffee.getLocalizedDescription());
             Glide.with(requireContext())
                     .load(coffee.getImageUrl())
                     .into(binding.imageProduct);

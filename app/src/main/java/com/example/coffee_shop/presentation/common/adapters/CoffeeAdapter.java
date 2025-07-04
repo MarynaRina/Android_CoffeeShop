@@ -69,7 +69,6 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.CoffeeView
             binding.setCoffee(coffee);
             binding.executePendingBindings();
 
-            // Відкриваємо BottomSheet для додавання до кошика і улюбленого
             binding.addToCartButton.setOnClickListener(v -> {
                 AddToCartBottomSheetFragment bottomSheet = AddToCartBottomSheetFragment.newInstance(coffee, true);
                 bottomSheet.show(fragmentManager, bottomSheet.getTag());

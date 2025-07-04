@@ -34,6 +34,7 @@
     <string name="full_name">Повне ім\'я</string>
     <string name="address">Адреса</string>
     <string name="city">Місто</string>
+    <string name="phone_number">Номер телефону</string>
     <string name="zip_code">Поштовий індекс</string>
 
     <!-- Language Settings -->
@@ -58,8 +59,9 @@
     <string name="m">M</string>
     <string name="l">L</string>
     <string name="without_sugar">Без цукру</string>
-    <string name="size_m">Розмір: M</string>
     <string name="add_to_cart">Додати до кошика</string>
+    <string name="size_format">Розмір: %s</string>
+    <string name="with_sugar">З цукром</string>
 
     <!-- Shopping Cart -->
     <string name="your_cart">Ваш кошик</string>

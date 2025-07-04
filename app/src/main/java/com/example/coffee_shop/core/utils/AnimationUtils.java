@@ -7,38 +7,39 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
 public class AnimationUtils {
+
     public static void animateSlideDownAndDismiss(View view, Runnable onEnd) {
         view.animate()
-                .translationY(view.getHeight())  // з'їзд донизу
-                .alpha(0f)                       // трохи фейду
+                .translationY(view.getHeight())
+                .alpha(0f)
                 .setDuration(400)
                 .withEndAction(onEnd)
                 .start();
     }
 
     public static void animateSlideUp(View view) {
-        view.setTranslationY(view.getHeight()); // стартуємо знизу
+        view.setTranslationY(view.getHeight());
         view.animate()
-                .translationY(0)   // виїжджає вгору до позиції 0
-                .alpha(1f)         // стає повністю видимим
+                .translationY(0)
+                .alpha(1f)
                 .setDuration(600)
                 .setInterpolator(new OvershootInterpolator(1.2f))
                 .start();
     }
+
     public static void animateFavorite(View view) {
         view.animate()
                 .scaleX(1.3f)
                 .scaleY(1.3f)
                 .setDuration(150)
-                .withEndAction(() -> {
-                    view.animate()
-                            .scaleX(1f)
-                            .scaleY(1f)
-                            .setDuration(150)
-                            .start();
-                })
+                .withEndAction(() -> view.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .setDuration(150)
+                        .start())
                 .start();
     }
+
     public static void pressReleasingAnimation(View view) {
         view.animate()
                 .scaleX(0.9f)
@@ -73,7 +74,6 @@ public class AnimationUtils {
         view.setAlpha(0f);
         view.setScaleX(0.8f);
         view.setScaleY(0.8f);
-
         view.animate()
                 .alpha(1f)
                 .scaleX(1f)
@@ -112,13 +112,8 @@ public class AnimationUtils {
     public static void moveUnderline(View underline, int startX, int endX, int duration) {
         ValueAnimator animator = ValueAnimator.ofInt(startX, endX);
         animator.setDuration(duration);
-        animator.setInterpolator(new AccelerateDecelerateInterpolator()); // Плавний перехід
-
-        animator.addUpdateListener(animation -> {
-            int animatedValue = (int) animation.getAnimatedValue();
-            underline.setTranslationX(animatedValue); // Переміщення підкреслення
-        });
-
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.addUpdateListener(a -> underline.setTranslationX((int) a.getAnimatedValue()));
         animator.start();
     }
 }

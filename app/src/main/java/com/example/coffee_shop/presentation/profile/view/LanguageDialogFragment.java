@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -21,76 +20,48 @@ import com.example.coffee_shop.presentation.profile.viewmodel.ProfileViewModel;
 
 public class LanguageDialogFragment extends DialogFragment {
 
-    private AlertDialog dialog;
-    private ProfileViewModel profileViewModel;
+    private static final String[] LANG_CODES = {"en", "uk", "pl"};
+    private ProfileViewModel viewModel;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+        View v = getLayoutInflater().inflate(R.layout.dialog_language_change, null, false);
 
-        profileViewModel = new ViewModelProvider(requireActivity())
-                .get(ProfileViewModel.class);
+        RadioGroup group = v.findViewById(R.id.language_radio_group);
+        v.findViewById(R.id.btn_cancel).setOnClickListener(c -> dismiss());
+        v.findViewById(R.id.btn_apply).setOnClickListener(c -> apply(checkedIdToCode(group)));
 
-        View view = getLayoutInflater().inflate(
-                R.layout.dialog_language_change, null, false);
-
-        RadioGroup radioGroup   = view.findViewById(R.id.language_radio_group);
-        Button cancelButton     = view.findViewById(R.id.btn_cancel);
-        Button applyButton      = view.findViewById(R.id.btn_apply);
-
-        // коди мов, що відображені у діалозі
-        final String[] languageCodes = {"en", "uk", "pl"};
-
-        // підсвічуємо вибрану мову
-        switch (getCurrentLanguageIndex(languageCodes)) {
-            case 1: radioGroup.check(R.id.radio_ukrainian); break;
-            case 2: radioGroup.check(R.id.radio_polish);    break;
-            default: radioGroup.check(R.id.radio_english);  break;
+        switch (savedLangIndex()) {
+            case 1: group.check(R.id.radio_ukrainian); break;
+            case 2: group.check(R.id.radio_polish);    break;
+            default: group.check(R.id.radio_english);
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-        builder.setView(view);
-        dialog = builder.create();
-
-        cancelButton.setOnClickListener(v -> dialog.dismiss());
-
-        applyButton.setOnClickListener(v -> {
-            int checkedId = radioGroup.getCheckedRadioButtonId();
-            String lang;
-
-            if (checkedId == R.id.radio_ukrainian) {
-                lang = "uk";
-            } else if (checkedId == R.id.radio_polish) {
-                lang = "pl";
-            } else {
-                lang = "en";
-            }
-            applyLanguage(lang);
-            dismiss();
-        });
-
-        return dialog;
+        return new AlertDialog.Builder(requireActivity()).setView(v).create();
     }
 
-    /** Шукаємо, яку мову вже збережено у SharedPreferences */
-    private int getCurrentLanguageIndex(String[] languageCodes) {
-        SharedPreferences prefs = requireContext()
-                .getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        String current = prefs.getString("language", "en");
-
-        for (int i = 0; i < languageCodes.length; i++) {
-            if (languageCodes[i].equals(current)) return i;
-        }
+    private int savedLangIndex() {
+        String saved = requireContext()
+                .getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+                .getString("language", "en");
+        for (int i = 0; i < LANG_CODES.length; i++)
+            if (LANG_CODES[i].equals(saved)) return i;
         return 0;
     }
 
-    /** Зберігаємо вибір і застосовуємо його через AppCompatDelegate */
-    private void applyLanguage(String langCode) {
-        profileViewModel.updateAppLanguage(langCode);      // -> prefs
+    private String checkedIdToCode(RadioGroup group) {
+        int id = group.getCheckedRadioButtonId();
+        if (id == R.id.radio_ukrainian) return "uk";
+        if (id == R.id.radio_polish)    return "pl";
+        return "en";
+    }
 
-        AppCompatDelegate.setApplicationLocales(
-                LocaleListCompat.forLanguageTags(langCode));
-
-        requireActivity().recreate();                     // оновити UI
+    private void apply(String code) {
+        viewModel.updateAppLanguage(code);
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(code));
+        requireActivity().recreate();
+        dismiss();
     }
 }

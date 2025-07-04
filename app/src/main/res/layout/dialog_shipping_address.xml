@@ -16,6 +16,7 @@
             android:id="@+id/edit_full_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:hint="@string/full_name"
             android:textColorHint="@color/text_title"
             android:inputType="text"
@@ -26,12 +27,13 @@
         <EditText
             android:id="@+id/edit_address"
             android:layout_width="match_parent"
+            android:autofillHints=""
             android:textColorHint="@color/text_title"
             android:layout_height="wrap_content"
             android:hint="@string/address"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:inputType="textPostalAddress"
+            android:inputType="text"
             android:padding="16dp"
             android:layout_marginTop="10dp" />
 
@@ -39,6 +41,7 @@
             android:id="@+id/edit_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:textStyle="bold"
             android:hint="@string/city"
             android:textSize="20sp"
@@ -48,8 +51,22 @@
             android:layout_marginTop="10dp" />
 
         <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/phone_number"
+            android:textColorHint="@color/text_title"
+            android:inputType="phone"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
             android:id="@+id/edit_zip_code"
             android:layout_width="match_parent"
+            android:autofillHints=""
             android:textColorHint="@color/text_title"
             android:textSize="20sp"
             android:layout_height="wrap_content"

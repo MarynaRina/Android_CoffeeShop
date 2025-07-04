@@ -32,7 +32,7 @@ public class HomeViewModel extends AndroidViewModel {
         userRef = (user != null) ? FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()) : null;
 
         loadUserProfile();
-        loadCoffeeData("hot"); // Початкове завантаження категорії "hot"
+        loadCoffeeData("hot");
     }
 
     public LiveData<List<Coffee>> getCoffeeList() {
@@ -54,8 +54,11 @@ public class HomeViewModel extends AndroidViewModel {
                 List<Coffee> filteredList = new ArrayList<>();
                 for (DataSnapshot coffeeSnapshot : snapshot.getChildren()) {
                     Coffee coffee = coffeeSnapshot.getValue(Coffee.class);
-                    if (coffee != null && category.equalsIgnoreCase(coffee.getCategory())) {
-                        filteredList.add(coffee);
+                    if (coffee != null) {
+                        coffee.setId(coffeeSnapshot.getKey());
+                        if (category.equalsIgnoreCase(coffee.getCategory())) {
+                            filteredList.add(coffee);
+                        }
                     }
                 }
                 coffeeList.setValue(filteredList);
@@ -67,7 +70,6 @@ public class HomeViewModel extends AndroidViewModel {
             }
         });
     }
-
     private void loadUserProfile() {
         if (userRef != null) {
             userRef.child("profileImage").addListenerForSingleValueEvent(new ValueEventListener() {

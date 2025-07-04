@@ -2,159 +2,129 @@ package com.example.coffee_shop.presentation.profile.viewmodel;
 
 import android.app.Application;
 import android.net.Uri;
-import android.util.Log;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.coffee_shop.data.models.UserProfile;
 import com.example.coffee_shop.data.repository.UserRepository;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class ProfileViewModel extends AndroidViewModel {
+
     private final UserRepository userRepository;
     private final MutableLiveData<UserProfile> userProfile = new MutableLiveData<>();
-    private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
-    private final MutableLiveData<String> imageUploadResult = new MutableLiveData<>();
+    private final SingleLiveEvent<String> toastMessage = new SingleLiveEvent<>();
+    private final SingleLiveEvent<String> languageSaved = new SingleLiveEvent<>();
+    private final SingleLiveEvent<String> imageUpdated = new SingleLiveEvent<>();
     private final String currentUserId;
+    private Observer<UserProfile> repoObserver;
 
-    public ProfileViewModel(@NonNull Application application) {
-        super(application);
-        this.userRepository = new UserRepository(application.getApplicationContext());
-        this.currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public ProfileViewModel(@NonNull Application app) {
+        super(app);
+        FirebaseUser cu = FirebaseAuth.getInstance().getCurrentUser();
+        if (cu == null) {
+            toastMessage.setValue("User not signed in");
+            currentUserId = null;
+            userRepository = null;
+            return;
+        }
+        currentUserId = cu.getUid();
+        userRepository = new UserRepository(app.getApplicationContext());
+        repoObserver = profile -> userProfile.postValue(profile);
+        userRepository.getUserProfile(currentUserId).observeForever(repoObserver);
     }
 
-    public void loadUserInfo(LifecycleOwner lifecycleOwner) {
-        userRepository.getUserProfile(currentUserId)
-                .observe(lifecycleOwner, profile -> {
-                    Log.d("ProfileVM", "Профіль завантажено: " + profile);
-                    userProfile.setValue(profile);
-                });
-    }
+    public LiveData<UserProfile> getUserProfile()        { return userProfile; }
+    public LiveData<String>      getToastMessage()       { return toastMessage; }
+    public LiveData<String>      getLanguageSaved()      { return languageSaved; }
+    public LiveData<String>      getImageUploadResult()  { return imageUpdated; }
 
-    public void updateAppLanguage(String languageCode) {
-        // Remember the selected language in SharedPreferences
-        userRepository.saveLanguagePreference(languageCode, new UserRepository.OnOperationCallback() {
-            @Override
-            public void onSuccess() {
-                Log.d("ProfileVM", "Language preference saved: " + languageCode);
-                // Notify UI that language was updated successfully
-                MutableLiveData<String> languageUpdateResult = new MutableLiveData<>();
-                languageUpdateResult.setValue(languageCode);
-            }
-
-            @Override
-            public void onError(String error) {
-                errorMessage.setValue(error);
-            }
+    public void updateAppLanguage(@NonNull String code) {
+        if (userRepository == null) return;
+        userRepository.saveLanguagePreference(code, new UserRepository.OnOp() {
+            @Override public void onSuccess() { languageSaved.setValue(code); }
+            @Override public void onError(String err) { toastMessage.setValue(err); }
         });
     }
 
     public void updateUserProfile(String username) {
-        if (username == null || username.trim().isEmpty()) {
-            errorMessage.setValue("Ім’я не може бути порожнім");
-            return;
-        }
-
-        userRepository.updateUsernameOnly(currentUserId, username, new UserRepository.OnOperationCallback() {
-            @Override
-            public void onSuccess() {
-                Log.d("ProfileVM", "Ім’я оновлено!");
-                // Локально оновлюємо LiveData
-                UserProfile profile = userProfile.getValue();
-                if (profile != null) {
-                    profile.setUsername(username);
-                    userProfile.setValue(profile);
-                }
-            }
-
-            @Override
-            public void onError(String error) {
-                Log.e("ProfileVM", "Помилка при оновленні імені: " + error);
-                errorMessage.setValue(error);
+        if (username.trim().isEmpty()) { toastMessage.setValue("Ім’я не може бути порожнім"); return; }
+        UserProfile cur = userProfile.getValue();
+        if (cur == null) return;
+        UserProfile optimistic = new UserProfile(cur);
+        optimistic.setUsername(username);
+        userProfile.setValue(optimistic);
+        userRepository.updateUsernameOnly(currentUserId, username, new UserRepository.OnOp() {
+            @Override public void onSuccess() { }
+            @Override public void onError(String err) {
+                userProfile.postValue(cur);
+                toastMessage.postValue(err);
             }
         });
     }
-    public void updateProfileImage(Uri imageUri, LifecycleOwner lifecycleOwner) {
-        userRepository.uploadProfileImage(currentUserId, imageUri)
-                .observe(lifecycleOwner, imageUrl -> {
-                    if (imageUrl != null) {
-                        UserProfile currentProfile = userProfile.getValue();
-                        if (currentProfile != null) {
-                            currentProfile.setProfileImage(imageUrl);
 
-                            userRepository.updateUserProfile(currentUserId, currentProfile, new UserRepository.OnOperationCallback() {
-                                @Override
-                                public void onSuccess() {
-                                    Log.d("ProfileVM", "Зображення оновлено!");
-                                    userProfile.setValue(currentProfile);
-                                    imageUploadResult.setValue(imageUrl);
-                                }
-
-                                @Override
-                                public void onError(String error) {
-                                    errorMessage.setValue(error);
-                                }
-                            });
-                        }
-                    } else {
-                        errorMessage.setValue("Не вдалося завантажити зображення");
-                    }
-                });
+    public void updateProfileImage(@NonNull Uri imageUri) {
+        if (userRepository == null) return;
+        LiveData<String> task = userRepository.uploadProfileImage(currentUserId, imageUri);
+        Observer<String> once = new Observer<String>() {
+            @Override public void onChanged(String url) {
+                task.removeObserver(this);
+                if (url == null) { toastMessage.setValue("Не вдалося завантажити зображення"); return; }
+                UserProfile p = userProfile.getValue();
+                if (p != null) { p.setProfileImage(url); userProfile.postValue(p); }
+                imageUpdated.setValue(url);
+            }
+        };
+        task.observeForever(once);
     }
 
-    public void updatePassword(String newPassword) {
+    public void updatePassword(@NonNull String newPassword) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            user.updatePassword(newPassword)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Log.d("ProfileVM", "Пароль оновлено успішно!");
-                        } else {
-                            errorMessage.setValue("Помилка оновлення пароля: " + task.getException().getMessage());
-                        }
-                    });
-        }
+        if (user == null) { toastMessage.setValue("User not signed in"); return; }
+        user.updatePassword(newPassword).addOnCompleteListener(task ->
+                toastMessage.setValue(task.isSuccessful()
+                        ? "Password updated successfully"
+                        : "Помилка: " + (task.getException() != null ? task.getException().getMessage() : "Unknown")));
     }
 
-    public void updateShippingAddress(String fullName, String address, String city, String zipCode) {
-        String fullAddress = fullName + ", " + address + ", " + city + ", " + zipCode;
-        UserProfile currentProfile = userProfile.getValue();
+    public void updateShippingAddress(String fullName, String address, String city, String zip, String phone) {
+        if (userRepository == null) return;
+        UserProfile p = userProfile.getValue();
+        if (p == null) { toastMessage.setValue("Профіль ще не завантажено"); return; }
 
-        if (currentProfile == null) {
-            errorMessage.setValue("Профіль ще не завантажено");
-            return;
-        }
-
-        currentProfile.setShippingAddress(fullAddress);
-
-        userRepository.updateShippingAddress(currentUserId, fullAddress, new UserRepository.OnOperationCallback() {
-            @Override
-            public void onSuccess() {
-                Log.d("ProfileVM", "Адреса доставки оновлена");
-                userProfile.setValue(currentProfile);
-            }
-
-            @Override
-            public void onError(String error) {
-                errorMessage.setValue(error);
-            }
+        userRepository.updateShippingAddress(currentUserId, fullName, address, city, zip, phone, new UserRepository.OnOp() {
+            @Override public void onSuccess() { userProfile.postValue(p); }
+            @Override public void onError(String err) { toastMessage.setValue(err); }
         });
     }
 
-    public LiveData<UserProfile> getUserProfile() {
-        return userProfile;
+    @Override protected void onCleared() {
+        if (userRepository != null && repoObserver != null) {
+            userRepository.getUserProfile(currentUserId).removeObserver(repoObserver);
+        }
     }
 
-    public LiveData<String> getErrorMessage() {
-        return errorMessage;
-    }
-
-    public LiveData<String> getImageUploadResult() {
-        return imageUploadResult;
+    public static class SingleLiveEvent<T> extends MutableLiveData<T> {
+        private final AtomicBoolean pending = new AtomicBoolean(false);
+        @MainThread @Override
+        public void observe(@NonNull androidx.lifecycle.LifecycleOwner owner,
+                            @NonNull androidx.lifecycle.Observer<? super T> obs) {
+            super.observe(owner, t -> {
+                if (pending.compareAndSet(true, false)) obs.onChanged(t);
+            });
+        }
+        @MainThread @Override
+        public void setValue(T t) {
+            pending.set(true);
+            super.setValue(t);
+        }
     }
 }

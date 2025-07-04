@@ -34,6 +34,7 @@
     <string name="full_name">Pełne imię i nazwisko</string>
     <string name="address">Adres</string>
     <string name="city">Miasto</string>
+    <string name="phone_number">Numer telefonu</string>
     <string name="zip_code">Kod pocztowy</string>
 
     <!-- Language Settings -->
@@ -58,8 +59,9 @@
     <string name="m">M</string>
     <string name="l">L</string>
     <string name="without_sugar">Bez cukru</string>
-    <string name="size_m">Rozmiar: M</string>
     <string name="add_to_cart">Dodaj do koszyka</string>
+    <string name="size_format">Rozmiar: %s</string>
+    <string name="with_sugar">Z cukrem</string>
 
     <!-- Shopping Cart -->
     <string name="your_cart">Twój koszyk</string>
@@ -68,6 +70,7 @@
     <string name="clear">Wyczyść</string>
     <string name="checkout">Do kasy</string>
     <string name="delete_item">Usuń</string>
+
 
     <!-- Favorites -->
     <string name="favorites">Ulubione</string>

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.coffee_shop.data.models.Coffee;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.*;
 
 import java.util.ArrayList;
@@ -44,4 +45,20 @@ public class CoffeeRepository {
 
         return liveData;
     }
+    public Coffee getCoffeeSync(String coffeeId) {
+        try {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Coffee").child(coffeeId);
+            DataSnapshot snapshot = Tasks.await(ref.get());
+
+            if (snapshot.exists()) {
+                return snapshot.getValue(Coffee.class);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -81,7 +81,7 @@ public class CartFragment extends Fragment {
     private void observeCart() {
         cartViewModel.getCartItems().observe(getViewLifecycleOwner(), items -> {
             cartAdapter.submitList(items);
-            updateUI(items);  // Замінюємо метод для покращеного оновлення UI
+            updateUI(items);
         });
     }
 
@@ -93,15 +93,11 @@ public class CartFragment extends Fragment {
         }
         binding.totalPrice.setText(String.format("$%.2f", total));
 
-        // Remove this line - it creates an unused adapter
-        // CartAdapter adapter = new CartAdapter(item -> cartViewModel.deleteCartItem(item));
 
-        // Активуємо або деактивуємо кнопки в залежності від наявності товарів
         boolean hasItems = !items.isEmpty();
         binding.btnClearCart.setEnabled(hasItems);
         binding.btnCheckout.setEnabled(hasItems);
 
-        // Показуємо/приховуємо повідомлення про порожній кошик
         binding.emptyCartMessage.setVisibility(hasItems ? View.GONE : View.VISIBLE);
         binding.recyclerView.setVisibility(hasItems ? View.VISIBLE : View.GONE);
     }

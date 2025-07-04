@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void observeViewModel() {
-        // Перевірка авторизації
         viewModel.getIsUserAuthenticated().observe(this, isAuthenticated -> {
             if (!isAuthenticated) {
                 startActivity(new Intent(this, WelcomeActivity.class));
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Оновлення фрагмента
         viewModel.getSelectedFragmentState().observe(this, fragmentState -> {
             if (fragmentState != null && fragmentState.fragment != null) {
                 getSupportFragmentManager().beginTransaction()
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Оновлення стилю навігації
         viewModel.getNavStyle().observe(this, navStyle -> {
             if (navStyle != null) {
                 applyBottomNavStyle(navStyle.isHomeFragment);
