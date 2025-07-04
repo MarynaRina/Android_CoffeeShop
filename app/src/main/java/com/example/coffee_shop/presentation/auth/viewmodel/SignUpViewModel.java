@@ -52,12 +52,10 @@ public class SignUpViewModel extends AndroidViewModel {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                         if (firebaseUser != null) {
-                            // Створюємо профіль користувача
                             UserProfile userProfile = new UserProfile();
                             userProfile.setUsername(username);
                             userProfile.setEmail(email);
 
-                            // Зберігаємо профіль у Firebase Realtime Database
                             String userId = firebaseUser.getUid();
                             FirebaseDatabase.getInstance().getReference()
                                     .child("Users")

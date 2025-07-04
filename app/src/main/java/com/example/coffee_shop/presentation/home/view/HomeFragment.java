@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
                 new ArrayList<>(),
                 getContext(),
                 getChildFragmentManager(),
-                getViewLifecycleOwner(),  // <-- обовʼязково!
+                getViewLifecycleOwner(),
                 sharedViewModel
         );
 

@@ -33,7 +33,6 @@ public abstract class AppDatabase extends RoomDatabase {
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
-            // Додайте стовпець hasSugar до таблиці cart_items
             database.execSQL("ALTER TABLE cart_items ADD COLUMN hasSugar INTEGER NOT NULL DEFAULT 0");
         }
     };

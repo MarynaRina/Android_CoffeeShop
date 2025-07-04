@@ -9,15 +9,11 @@ import java.util.Map;
 
 public class CloudinaryDataSource {
 
-    private final CloudinaryManager cloudinaryManager;
-
     public CloudinaryDataSource(CloudinaryManager cloudinaryManager) {
-        this.cloudinaryManager = cloudinaryManager;
     }
 
     public void uploadImage(Uri imageUri, final CustomUploadCallback callback) {
         MediaManager.get().upload(imageUri)
-                // You can add parameters here (e.g., folder, public_id, resource_type, etc.)
                 .callback(new UploadCallback() {
                     @Override
                     public void onStart(String requestId) {
@@ -52,7 +48,6 @@ public class CloudinaryDataSource {
                 .dispatch();
     }
 
-    // Define your own callback interface to decouple from Cloudinary's callback
     public interface CustomUploadCallback {
         void onStart(String requestId);
         void onProgress(String requestId, long bytes, long totalBytes);

@@ -12,7 +12,6 @@ public class BindingAdapters {
     @BindingAdapter("imageUrl")
     public static void loadImage(ImageView view, String imageUrl) {
         if (imageUrl != null && !imageUrl.isEmpty()) {
-            Log.d("Glide", "Loading image: " + imageUrl); // Перевіряємо, чи приходить URL
 
             Glide.with(view.getContext())
                     .load(imageUrl)

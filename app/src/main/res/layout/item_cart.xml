@@ -1,18 +1,28 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="item"
+            type="com.example.coffee_shop.data.models.CartItem" />
+        <variable
+            name="onDeleteClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/cart_item_bg"
         android:padding="12dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/cart_item_bg">
 
         <ImageView
             android:id="@+id/itemImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{item.imageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -21,14 +31,14 @@
             android:id="@+id/itemTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/coffee_name"
+            android:text="@{item.LocalizedName}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toEndOf="@id/itemImage"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
+            app:layout_constraintEnd_toStartOf="@id/btnDelete" />
 
         <ImageButton
             android:id="@+id/btnDelete"
@@ -38,6 +48,7 @@
             android:contentDescription="@string/delete_item"
             android:src="@drawable/ic_delete"
             android:padding="2dp"
+            android:onClick="@{onDeleteClick}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,45 +57,42 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="@string/size_m"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@id/itemImage"
             app:layout_constraintTop_toBottomOf="@id/itemTitle"
-            app:layout_constraintEnd_toStartOf="@id/itemQuantity"
-            android:layout_marginTop="4dp" />
-
-        <TextView
-            android:id="@+id/itemSugar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/without_sugar"
-            android:textSize="14sp"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toEndOf="@id/itemImage"
-            app:layout_constraintTop_toBottomOf="@id/itemSize"
-            app:layout_constraintEnd_toStartOf="@id/itemPrice"
-            android:layout_marginTop="4dp" />
+            app:layout_constraintEnd_toStartOf="@id/itemQuantity" />
 
         <TextView
             android:id="@+id/itemQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text='@{String.format("x%d", item.quantity)}'
             android:textSize="16sp"
-            android:text="x2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/itemSize"
             app:layout_constraintBottom_toBottomOf="@id/itemSize" />
 
         <TextView
+            android:id="@+id/itemSugar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/itemImage"
+            app:layout_constraintTop_toBottomOf="@id/itemSize"
+            app:layout_constraintEnd_toStartOf="@id/itemPrice" />
+
+        <TextView
             android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text='@{String.format("$%.2f", item.totalPrice)}'
             android:textSize="16sp"
-            android:text="$8.00"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/itemQuantity"
+            app:layout_constraintTop_toBottomOf="@id/itemQuantity"
             app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

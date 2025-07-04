@@ -17,7 +17,7 @@ public class CloudinaryManager {
         config.put("cloud_name", "dur0e2sni");
         config.put("api_key", "447978645624194");
         config.put("api_secret", "LAEPAz2rEdILE5CbbwiOKOPEYHg");
-        MediaManager.init(applicationContext, config); // Ініціалізація MediaManager з Context
+        MediaManager.init(applicationContext, config);
     }
 
     public static CloudinaryManager getInstance(Context context) {

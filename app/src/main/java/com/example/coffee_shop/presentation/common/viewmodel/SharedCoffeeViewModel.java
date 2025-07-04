@@ -74,7 +74,6 @@ public class SharedCoffeeViewModel extends AndroidViewModel {
         }
     }
 
-    // Додай це:
     public LiveData<List<Coffee>> getAllFavoriteCoffees() {
         return favoriteCoffees;
     }
@@ -88,7 +87,7 @@ public class SharedCoffeeViewModel extends AndroidViewModel {
     public void addCoffeeToFavorites(Coffee coffee) {
         if (coffee == null || coffee.getId() == null) return;
 
-        userRepository.addCoffeeToFavorites(userId, coffee, new UserRepository.OnOperationCallback() {
+        userRepository.addCoffeeToFavorites(userId, coffee, new UserRepository.OnOp() {
             @Override
             public void onSuccess() {
                 getOrCreateFavoriteLiveData(coffee.getId()).setValue(true);
@@ -105,7 +104,7 @@ public class SharedCoffeeViewModel extends AndroidViewModel {
     public void removeCoffeeFromFavorites(Coffee coffee) {
         if (coffee == null || coffee.getId() == null) return;
 
-        userRepository.removeCoffeeFromFavorites(userId, coffee.getId(), new UserRepository.OnOperationCallback() {
+        userRepository.removeCoffeeFromFavorites(userId, coffee.getId(), new UserRepository.OnOp() {
             @Override
             public void onSuccess() {
                 getOrCreateFavoriteLiveData(coffee.getId()).setValue(false);

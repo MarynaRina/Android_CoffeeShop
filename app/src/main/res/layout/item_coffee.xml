@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{coffee.name}"
+            android:text="@{coffee.localizedName}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -45,18 +45,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingTop="4dp"
             app:layout_constraintTop_toBottomOf="@id/coffee_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:paddingTop="4dp">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <!-- Ціна кави -->
             <TextView
                 android:id="@+id/coffee_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:text="@{coffee.formattedPrice}"
+                android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:paddingStart="8dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@drawable/circle_button_background"
-                android:contentDescription="Add to cart"
+                android:contentDescription="@string/add_to_cart"
                 android:src="@drawable/ic_add"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"

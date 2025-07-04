@@ -54,7 +54,7 @@ public class SearchViewModel extends ViewModel {
             String lowerCaseQuery = query.toLowerCase();
             List<Coffee> filtered = new ArrayList<>();
             for (Coffee c : source) {
-                if (c.getName().toLowerCase().contains(lowerCaseQuery)) {
+                if (c.getLocalizedName().toLowerCase().contains(lowerCaseQuery)) {
                     filtered.add(c);
                 }
             }

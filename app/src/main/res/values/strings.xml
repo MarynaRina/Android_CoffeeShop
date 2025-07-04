@@ -32,6 +32,7 @@
     <string name="shipping_address">Shipping Address</string>
     <string name="full_name">Full Name</string>
     <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
     <string name="city">City</string>
     <string name="zip_code">Zip Code</string>
 
@@ -56,9 +57,10 @@
     <string name="s">S</string>
     <string name="m">M</string>
     <string name="l">L</string>
-    <string name="without_sugar">Without sugar</string>
-    <string name="size_m">Size: M</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="size_format">Size: %s</string>
+    <string name="with_sugar">With sugar</string>
+    <string name="without_sugar">Without sugar</string>
 
     <!-- Shopping Cart -->
     <string name="your_cart">Your Cart</string>
