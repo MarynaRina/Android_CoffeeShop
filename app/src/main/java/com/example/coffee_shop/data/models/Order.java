@@ -9,6 +9,7 @@ public class Order {
     private double totalPrice;
     private List<CartItem> items;
     private ShippingAddress shippingAddress;
+    private String status; // ← додано
 
     public Order() {}
 
@@ -20,6 +21,18 @@ public class Order {
         this.totalPrice = totalPrice;
         this.items = items;
         this.shippingAddress = shippingAddress;
+    }
+
+    // ✅ Новий повний конструктор з параметром "status"
+    public Order(String id, String userId, long timestamp, double totalPrice,
+                 List<CartItem> items, ShippingAddress shippingAddress, String status) {
+        this.id = id;
+        this.userId = userId;
+        this.timestamp = timestamp;
+        this.totalPrice = totalPrice;
+        this.items = items;
+        this.shippingAddress = shippingAddress;
+        this.status = status;
     }
 
     public String getId() {
@@ -70,4 +83,12 @@ public class Order {
         this.shippingAddress = shippingAddress;
     }
 
+    // ✅ Getter & Setter для status
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

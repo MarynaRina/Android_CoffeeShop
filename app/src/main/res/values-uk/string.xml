@@ -74,4 +74,7 @@
     <!-- Favorites -->
     <string name="favorites">Вибране</string>
     <string name="no_favorites_yet">Поки немає вибраних</string>
+
+    <string name="order_successful">Замовлення успішно оформлено!</string>
+    <string name="back_home">Повернутись на головну</string>
 </resources>

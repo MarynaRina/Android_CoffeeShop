@@ -15,9 +15,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.coffee_shop.R;
+import com.example.coffee_shop.data.models.CartItem;
+import com.example.coffee_shop.data.models.ShippingAddress;
 import com.example.coffee_shop.databinding.FragmentCartBinding;
 import com.example.coffee_shop.presentation.cart.viewmodel.CartViewModel;
 import com.example.coffee_shop.presentation.common.adapters.CartAdapter;
+import com.example.coffee_shop.presentation.order.OrderSuccessFragment;
+
+import java.util.List;
 
 public class CartFragment extends Fragment {
     private FragmentCartBinding binding;
@@ -52,24 +58,50 @@ public class CartFragment extends Fragment {
 
             return insets;
         });
+
         setupRecyclerView();
         setupButtons();
         observeCart();
     }
 
     private void setupButtons() {
-        binding.btnClearCart.setOnClickListener(v -> {
-            cartViewModel.clearCart();
-        });
+        binding.btnClearCart.setOnClickListener(v -> cartViewModel.clearCart());
 
         binding.btnCheckout.setOnClickListener(v -> {
             if (cartAdapter.getItemCount() > 0) {
-                Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
-                cartViewModel.clearCart();
+                double total = calculateTotal(cartAdapter.getCurrentList());
+
+                cartViewModel.placeOrder(total, new CartViewModel.OrderCallback() {
+                    @Override
+                    public void onSuccess(String orderId, String fullName, String phoneNumber, String fullAddress, ShippingAddress address) {
+                        Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
+
+                        OrderSuccessFragment fragment = OrderSuccessFragment.newInstance(orderId, address, total);
+
+                        requireActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_container, fragment)
+                                .addToBackStack(null)
+                                .commit();
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        Toast.makeText(requireContext(), "Failed to place order: " + message, Toast.LENGTH_SHORT).show();
+                    }
+                });
             } else {
                 Toast.makeText(requireContext(), "Your cart is empty!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private double calculateTotal(List<CartItem> items) {
+        double total = 0.0;
+        for (CartItem item : items) {
+            total += item.getTotalPrice();
+        }
+        return total;
     }
 
     private void setupRecyclerView() {
@@ -85,23 +117,19 @@ public class CartFragment extends Fragment {
         });
     }
 
-    private void updateUI(java.util.List<com.example.coffee_shop.data.models.CartItem> items) {
-        // Рахуємо загальну суму
+    private void updateUI(List<CartItem> items) {
         double total = 0.0;
-        for (com.example.coffee_shop.data.models.CartItem item : items) {
+        for (CartItem item : items) {
             total += item.getTotalPrice();
         }
-        binding.totalPrice.setText(String.format("$%.2f", total));
-
+        binding.totalPrice.setText(String.format("₴%.2f", total));
 
         boolean hasItems = !items.isEmpty();
         binding.btnClearCart.setEnabled(hasItems);
         binding.btnCheckout.setEnabled(hasItems);
-
         binding.emptyCartMessage.setVisibility(hasItems ? View.GONE : View.VISIBLE);
         binding.recyclerView.setVisibility(hasItems ? View.VISIBLE : View.GONE);
     }
-
 
     @Override
     public void onDestroyView() {
