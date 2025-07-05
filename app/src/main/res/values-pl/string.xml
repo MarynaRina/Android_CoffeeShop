@@ -75,4 +75,6 @@
     <!-- Favorites -->
     <string name="favorites">Ulubione</string>
     <string name="no_favorites_yet">Brak ulubionych</string>
+    <string name="order_successful">Zamówienie zostało złożone pomyślnie!</string>
+    <string name="back_home">Wróć do strony głównej</string>
 </resources>

@@ -73,5 +73,7 @@
     <!-- Favorites -->
     <string name="favorites">Favorites</string>
     <string name="no_favorites_yet">No favorites yet</string>
+    <string name="back_home">Back to Home</string>
+    <string name="order_successful">Order Placed Successfully!</string>
 
 </resources>
