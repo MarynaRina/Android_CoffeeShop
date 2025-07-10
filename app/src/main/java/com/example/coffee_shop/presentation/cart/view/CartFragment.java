@@ -23,12 +23,14 @@ import com.example.coffee_shop.presentation.cart.viewmodel.CartViewModel;
 import com.example.coffee_shop.presentation.common.adapters.CartAdapter;
 import com.example.coffee_shop.presentation.order.OrderSuccessFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartFragment extends Fragment {
     private FragmentCartBinding binding;
     private CartViewModel cartViewModel;
     private CartAdapter cartAdapter;
+    private List<CartItem> currentCartItems = new ArrayList<>();
 
     @Nullable
     @Override
@@ -68,14 +70,23 @@ public class CartFragment extends Fragment {
         binding.btnClearCart.setOnClickListener(v -> cartViewModel.clearCart());
 
         binding.btnCheckout.setOnClickListener(v -> {
-            if (cartAdapter.getItemCount() > 0) {
-                double total = calculateTotal(cartAdapter.getCurrentList());
+            if (currentCartItems == null || currentCartItems.isEmpty()) {
+                Toast.makeText(requireContext(), "Your cart is empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                cartViewModel.placeOrder(total, new CartViewModel.OrderCallback() {
-                    @Override
-                    public void onSuccess(String orderId, String fullName, String phoneNumber, String fullAddress, ShippingAddress address) {
-                        Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
+            double total = calculateTotal(currentCartItems);
 
+            cartViewModel.placeOrder(total, new CartViewModel.OrderCallback() {
+                @Override
+                public void onSuccess(String orderId, String fullName, String phoneNumber, String fullAddress, ShippingAddress address) {
+                    Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
+
+                    // Очищаємо стан ViewModel після успішного замовлення
+                    cartViewModel.resetOrderState();
+
+                    // Перевіряємо чи не відкритий вже OrderSuccessFragment
+                    if (!(requireActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container) instanceof OrderSuccessFragment)) {
                         OrderSuccessFragment fragment = OrderSuccessFragment.newInstance(orderId, address, total);
 
                         requireActivity().getSupportFragmentManager()
@@ -84,15 +95,13 @@ public class CartFragment extends Fragment {
                                 .addToBackStack(null)
                                 .commit();
                     }
+                }
 
-                    @Override
-                    public void onFailure(String message) {
-                        Toast.makeText(requireContext(), "Failed to place order: " + message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                Toast.makeText(requireContext(), "Your cart is empty!", Toast.LENGTH_SHORT).show();
-            }
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(requireContext(), "Failed to place order: " + message, Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 
@@ -112,8 +121,11 @@ public class CartFragment extends Fragment {
 
     private void observeCart() {
         cartViewModel.getCartItems().observe(getViewLifecycleOwner(), items -> {
-            cartAdapter.submitList(items);
-            updateUI(items);
+            if (items != null) {
+                currentCartItems = new ArrayList<>(items); // Створюємо копію
+                cartAdapter.submitList(items);
+                updateUI(items);
+            }
         });
     }
 
@@ -122,7 +134,7 @@ public class CartFragment extends Fragment {
         for (CartItem item : items) {
             total += item.getTotalPrice();
         }
-        binding.totalPrice.setText(String.format("₴%.2f", total));
+        binding.totalPrice.setText(String.format("$%.2f", total));
 
         boolean hasItems = !items.isEmpty();
         binding.btnClearCart.setEnabled(hasItems);

@@ -9,7 +9,7 @@ public class Order {
     private double totalPrice;
     private List<CartItem> items;
     private ShippingAddress shippingAddress;
-    private String status; // ← додано
+    private String status;
 
     public Order() {}
 
@@ -23,7 +23,6 @@ public class Order {
         this.shippingAddress = shippingAddress;
     }
 
-    // ✅ Новий повний конструктор з параметром "status"
     public Order(String id, String userId, long timestamp, double totalPrice,
                  List<CartItem> items, ShippingAddress shippingAddress, String status) {
         this.id = id;
@@ -83,7 +82,6 @@ public class Order {
         this.shippingAddress = shippingAddress;
     }
 
-    // ✅ Getter & Setter для status
     public String getStatus() {
         return status;
     }
