@@ -53,7 +53,6 @@ public class OrderSuccessFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Отримуємо MainViewModel
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
         if (getArguments() != null) {
@@ -74,12 +73,10 @@ public class OrderSuccessFragment extends Fragment {
         }
 
         binding.btnBackHome.setOnClickListener(v -> {
-            // Очищаємо back stack
             requireActivity()
                     .getSupportFragmentManager()
                     .popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-            // Використовуємо MainViewModel для переходу на Home
             mainViewModel.selectFragment(R.id.home);
         });
     }

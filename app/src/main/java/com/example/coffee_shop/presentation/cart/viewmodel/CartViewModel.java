@@ -90,14 +90,12 @@ public class CartViewModel extends AndroidViewModel {
     }
 
     public void resetUIState() {
-        // Скидаємо тільки UI стан, не корзину
         quantity.setValue(1);
         selectedSize.setValue("S");
         isFavorite.setValue(false);
     }
 
     public void resetOrderState() {
-        // Очищаємо стан після замовлення
         reset();
     }
 
@@ -113,7 +111,6 @@ public class CartViewModel extends AndroidViewModel {
         Observer<List<CartItem>> observer = new Observer<List<CartItem>>() {
             @Override
             public void onChanged(List<CartItem> items) {
-                // ВАЖЛИВО: видаляємо observer одразу після отримання даних
                 cartItems.removeObserver(this);
 
                 if (items == null || items.isEmpty()) {
@@ -190,7 +187,6 @@ public class CartViewModel extends AndroidViewModel {
 
         orderRef.setValue(order).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                // ТІЛЬКИ ПІСЛЯ успішного збереження очищаємо корзину
                 clearCart();
                 String fullAddress = address.getAddress() + ", " + address.getCity() + ", " + address.getZip();
                 callback.onSuccess(orderId, address.getFullName(), address.getPhoneNumber(), fullAddress, address);

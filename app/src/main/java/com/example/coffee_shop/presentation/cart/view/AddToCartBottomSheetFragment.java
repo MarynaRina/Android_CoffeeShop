@@ -65,15 +65,12 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
             updateUI();
         }
 
-        // Отримуємо SharedViewModel для роботи з улюбленими
         sharedViewModel = new ViewModelProvider(
                 MyApp.getInstance(),
                 new SharedCoffeeViewModelFactory(MyApp.getInstance())
         ).get(SharedCoffeeViewModel.class);
 
-        // Отримуємо CartViewModel та скидаємо його стан для нового товару
         cartViewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
-        // ВАЖЛИВО: скидаємо стан тільки для UI елементів, не для корзини
         cartViewModel.resetUIState();
 
         observeFavorite();
