@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.coffee_shop.R;
 import com.example.coffee_shop.databinding.FragmentOrderSuccessBinding;
 import com.example.coffee_shop.data.models.ShippingAddress;
-import com.example.coffee_shop.presentation.cart.view.CartFragment;
-import com.example.coffee_shop.presentation.home.view.HomeFragment;
+import com.example.coffee_shop.presentation.main.viewmodel.MainViewModel;
 
 public class OrderSuccessFragment extends Fragment {
 
     private FragmentOrderSuccessBinding binding;
+    private MainViewModel mainViewModel;
 
     private static final String ARG_NAME = "name";
     private static final String ARG_PHONE = "phone";
@@ -52,6 +53,9 @@ public class OrderSuccessFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Отримуємо MainViewModel
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
         if (getArguments() != null) {
             String orderId = getArguments().getString(ARG_ORDER_ID);
             String name = getArguments().getString(ARG_NAME);
@@ -69,14 +73,15 @@ public class OrderSuccessFragment extends Fragment {
             binding.setTotalPrice(String.format("₴%.2f", total));
         }
 
-        binding.btnBackHome.setOnClickListener(v ->
-                requireActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new HomeFragment())
-                        .addToBackStack(null)
-                        .commit()
-        );
+        binding.btnBackHome.setOnClickListener(v -> {
+            // Очищаємо back stack
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+            // Використовуємо MainViewModel для переходу на Home
+            mainViewModel.selectFragment(R.id.home);
+        });
     }
 
     @Override

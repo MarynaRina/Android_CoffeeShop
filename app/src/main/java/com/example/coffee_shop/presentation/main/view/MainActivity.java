@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(binding.fragmentContainer.getId(), fragmentState.fragment)
                         .commit();
+
+                updateBottomNavSelection(fragmentState.menuItemId);
             }
         });
 
@@ -91,6 +93,21 @@ public class MainActivity extends AppCompatActivity {
             if (navStyle != null) {
                 applyBottomNavStyle(navStyle.isHomeFragment);
             }
+        });
+    }
+
+    private void updateBottomNavSelection(int menuItemId) {
+        binding.bottomNav.setOnItemSelectedListener(null);
+
+        binding.bottomNav.setSelectedItemId(menuItemId);
+
+        binding.bottomNav.setOnItemSelectedListener(item -> {
+            viewModel.selectFragment(item.getItemId());
+            View iconView = binding.bottomNav.findViewById(item.getItemId());
+            if (iconView != null) {
+                AnimationUtils.highlightsAnimation(iconView);
+            }
+            return true;
         });
     }
 }

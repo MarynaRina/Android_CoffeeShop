@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         SharedCoffeeViewModel sharedViewModel = new ViewModelProvider(
-                MyApp.getInstance(), // твій application singleton
+                MyApp.getInstance(),
                 new SharedCoffeeViewModelFactory(MyApp.getInstance())
         ).get(SharedCoffeeViewModel.class);
         coffeeAdapter = new CoffeeAdapter(

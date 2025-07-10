@@ -49,18 +49,23 @@ public class MainViewModel extends AndroidViewModel {
 
         if (itemId == R.id.home) {
             fragmentState.fragment = new HomeFragment();
+            fragmentState.menuItemId = R.id.home;
             style.isHomeFragment = true;
         } else if (itemId == R.id.cart) {
             fragmentState.fragment = new CartFragment();
+            fragmentState.menuItemId = R.id.cart;
             style.isHomeFragment = true;
         } else if (itemId == R.id.favorite) {
             fragmentState.fragment = new FavoritesFragment();
+            fragmentState.menuItemId = R.id.favorite;
             style.isHomeFragment = true;
         } else if (itemId == R.id.profile) {
             fragmentState.fragment = new ProfileFragment();
+            fragmentState.menuItemId = R.id.profile;
             style.isHomeFragment = false;
         } else {
             fragmentState.fragment = new HomeFragment();
+            fragmentState.menuItemId = R.id.home;
             style.isHomeFragment = true;
         }
 
@@ -68,9 +73,9 @@ public class MainViewModel extends AndroidViewModel {
         navStyle.setValue(style);
     }
 
-
     public static class FragmentState {
         public Fragment fragment;
+        public int menuItemId;
     }
 
     public static class NavStyle {

@@ -56,6 +56,7 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         binding = BottomSheetAddToCartBinding.inflate(inflater, container, false);
 
         if (getArguments() != null) {
@@ -64,13 +65,16 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
             updateUI();
         }
 
+        // Отримуємо SharedViewModel для роботи з улюбленими
         sharedViewModel = new ViewModelProvider(
                 MyApp.getInstance(),
                 new SharedCoffeeViewModelFactory(MyApp.getInstance())
         ).get(SharedCoffeeViewModel.class);
 
+        // Отримуємо CartViewModel та скидаємо його стан для нового товару
         cartViewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
-        cartViewModel.reset();
+        // ВАЖЛИВО: скидаємо стан тільки для UI елементів, не для корзини
+        cartViewModel.resetUIState();
 
         observeFavorite();
         setupUI();
@@ -143,8 +147,6 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
 
     private void updateUI() {
         if (coffee != null) {
-            Log.d("AddToCartBottomSheet", "name: " + coffee.getLocalizedName());
-            Log.d("AddToCartBottomSheet", "desc: " + coffee.getLocalizedDescription());
             binding.textTitle.setText(coffee.getLocalizedName());
             binding.textDescription.setText(coffee.getLocalizedDescription());
             Glide.with(requireContext())
@@ -158,7 +160,7 @@ public class AddToCartBottomSheetFragment extends BottomSheetDialogFragment {
                 ? getDialog().getWindow().getDecorView()
                 : binding.getRoot();
 
-        AnimationUtils.animateSlideDownAndDismiss(dialogView, this::dismiss);
+        AnimationUtils.animateSlideDownAndDismiss(dialogView, this::dismissAllowingStateLoss);
     }
 
     @NonNull
