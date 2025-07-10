@@ -73,11 +73,6 @@ com.example.coffee_shop/
 
 Or simply click "Run" in Android Studio.
 
-## Screenshots
-
-> *(You can add screenshots here later)*  
-> Example: Home screen, Product details, Cart, Order confirmation
-
 ## Highlights
 
 - Clean MVVM architecture with proper separation of concerns
@@ -95,6 +90,6 @@ Or simply click "Run" in Android Studio.
 ## Author
 
 **Maryna**  
-[GitHub](https://github.com/MarynaRina) • [LinkedIn](https://linkedin.com/in/MarynaRina)
+[GitHub](https://github.com/MarynaRina) • [LinkedIn](www.linkedin.com/in/maryna-maksymchuk-637082287)
 
 
