@@ -7,10 +7,8 @@ public class LocalizedText implements Serializable {
     private String uk;
     private String pl;
 
-    // ОБОВ'ЯЗКОВО: порожній конструктор
     public LocalizedText() {}
 
-    // Геттери і сеттери (ОБОВ'ЯЗКОВІ для Firebase)
     public String getEn() {
         return en;
     }
@@ -35,7 +33,6 @@ public class LocalizedText implements Serializable {
         this.pl = pl;
     }
 
-    // Можеш додати метод для зручності
     public String getCurrentLangText(String lang) {
         switch (lang) {
             case "uk":

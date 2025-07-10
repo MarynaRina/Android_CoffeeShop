@@ -82,10 +82,8 @@ public class CartFragment extends Fragment {
                 public void onSuccess(String orderId, String fullName, String phoneNumber, String fullAddress, ShippingAddress address) {
                     Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
 
-                    // Очищаємо стан ViewModel після успішного замовлення
                     cartViewModel.resetOrderState();
 
-                    // Перевіряємо чи не відкритий вже OrderSuccessFragment
                     if (!(requireActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container) instanceof OrderSuccessFragment)) {
                         OrderSuccessFragment fragment = OrderSuccessFragment.newInstance(orderId, address, total);
 
@@ -122,7 +120,7 @@ public class CartFragment extends Fragment {
     private void observeCart() {
         cartViewModel.getCartItems().observe(getViewLifecycleOwner(), items -> {
             if (items != null) {
-                currentCartItems = new ArrayList<>(items); // Створюємо копію
+                currentCartItems = new ArrayList<>(items);
                 cartAdapter.submitList(items);
                 updateUI(items);
             }

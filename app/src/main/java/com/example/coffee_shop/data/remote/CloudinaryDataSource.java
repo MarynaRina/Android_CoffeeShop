@@ -27,7 +27,6 @@ public class CloudinaryDataSource {
 
                     @Override
                     public void onSuccess(String requestId, Map resultData) {
-                        // Change the key "url" to "secure_url" if you need a secure URL:
                         String imageUrl = (String) resultData.get("secure_url");
                         if (imageUrl == null) {
                             imageUrl = (String) resultData.get("url");
