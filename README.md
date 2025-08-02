@@ -24,26 +24,6 @@ A modern, fully-featured Android e-commerce app for ordering coffee — integrat
 - **Local Storage**: Room
 - **Reactive**: LiveData, ViewModel, DataBinding
 
-## Project Structure
-
-```
-com.example.coffee_shop/
-├── presentation/         # UI layer (fragments, activities)
-│   ├── auth/             # Auth screens (login, register)
-│   ├── profile/          # Profile view & edit
-│   ├── cart/             # Cart & checkout logic
-│   ├── search/           # Search & filters
-│   ├── main/             # Main activity & navigation
-│   └── common/           # Shared components (modals, buttons)
-├── data/                 # Data layer
-│   ├── models/           # Model classes (Coffee, CartItem, Order, etc.)
-│   ├── repository/       # Data access abstraction
-│   ├── remote/           # Firebase interactions
-│   └── database/         # Room setup
-├── core/                 # Utils & managers (localization, image upload)
-└── MyApp.java            # Application-level ViewModelStore
-```
-
 ## Setup Instructions
 
 ### Requirements
